@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import ImgSlider from "./ImgSlider";
+import NewDisney from "./NewDisney";
+import Originals from "./Originals";
+import Recommends from "./Recommends";
 import Viewers from "./Viewers";
 
 const Home = () => {
@@ -7,6 +10,9 @@ const Home = () => {
     <Container>
       <ImgSlider />
       <Viewers />
+      <Recommends/>
+      <NewDisney/>
+      <Originals/>
     </Container>
   );
 };
