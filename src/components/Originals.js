@@ -1,39 +1,24 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectOriginal } from "../features/movie/movieSlice";
 
 const Originals = (props) => {
+  const movies = useSelector(selectOriginal);
+
   return (
     <Container>
-      <h4>Disney＋ Originals</h4>
+      <h4>Originals</h4>
       <Content>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/vl/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8:154CEB/scale?width=400&aspectRatio=1.786format=jpeg"
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/vl/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8:154CEB/scale?width=400&aspectRatio=1.786format=jpeg"
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/vl/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8:154CEB/scale?width=400&aspectRatio=1.786format=jpeg"
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img
-              src="https://prod-ripcut-delivery.disney-plus.net/vl/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8:154CEB/scale?width=400&aspectRatio=1.786format=jpeg"
-            />
-          </Link>
-        </Wrap>
+        {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              {movie.id}
+              <Link to={`/detail/` + movie.id}>
+                <img src={movie.cardImg} alt={movie.title} />
+              </Link>
+            </Wrap>
+          ))}
       </Content>
     </Container>
   );
@@ -42,6 +27,7 @@ const Originals = (props) => {
 const Container = styled.div`
   padding: 0 0 26px;
 `;
+
 const Content = styled.div`
   display: grid;
   grid-gap: 25px;
@@ -82,4 +68,5 @@ const Wrap = styled.div`
     border-color: rgba(249, 249, 249, 0.8);
   }
 `;
+
 export default Originals;

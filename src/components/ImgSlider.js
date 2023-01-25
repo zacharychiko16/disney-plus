@@ -9,28 +9,32 @@ const ImgSlider = (props) => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
+    slidesToScroll: 1,
     autoplay: true,
   };
   return (
     <Carousel {...settings}>
       <Wrap>
         <a>
-          <img src="/images/slider-badag.jpg" />
+          <img src="/images/slider-badging.jpg" alt="" />
         </a>
       </Wrap>
+
       <Wrap>
         <a>
-          <img src="/images/slider-badging.jpg" />
+          <img src="/images/slider-scale.jpg" alt="" />
         </a>
       </Wrap>
+
       <Wrap>
         <a>
-          <img src="/images/slider-scale.jpg" />
+          <img src="/images/slider-badag.jpg" alt="" />
         </a>
       </Wrap>
+
       <Wrap>
         <a>
-          <img src="/images/slider-scales.jpg" />
+          <img src="/images/slider-scales.jpg" alt="" />
         </a>
       </Wrap>
     </Carousel>
@@ -39,6 +43,7 @@ const ImgSlider = (props) => {
 
 const Carousel = styled(Slider)`
   margin-top: 20px;
+
   & > button {
     opacity: 0;
     height: 100%;
@@ -74,6 +79,7 @@ const Carousel = styled(Slider)`
     right: -75px;
   }
 `;
+
 const Wrap = styled.div`
   border-radius: 4px;
   cursor: pointer;
@@ -82,9 +88,10 @@ const Wrap = styled.div`
   a {
     border-radius: 4px;
     box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
-      rgb(0 0 0 / 69%) 0px 16px 10px --10px;
+      rgb(0 0 0 / 73%) 0px 16px 10px -10px;
     cursor: pointer;
     display: block;
+    position: relative;
     padding: 4px;
 
     img {
@@ -93,10 +100,11 @@ const Wrap = styled.div`
     }
 
     &:hover {
-      padding: 0%;
-      border: 4px solid rgba(249, 249, 2490.8);
+      padding: 0;
+      border: 4px solid rgba(249, 249, 249, 0.8);
       transition-duration: 300ms;
     }
   }
 `;
+
 export default ImgSlider;
