@@ -59,7 +59,9 @@ const Header = (props) => {
   return (
     <Nav>
       <Logo>
-        <img src="/images/logo.svg" alt="Disney+" />
+        <a href="/home">
+          <img src="/images/logo.svg" alt="Disney+" />
+        </a>
       </Logo>
 
       {!userName ? (
@@ -117,6 +119,7 @@ const Nav = styled.nav`
   padding: 0 36px;
   letter-spacing: 16px;
   z-index: 3;
+  cursor: pointer;
 `;
 
 const Logo = styled.a`
@@ -126,6 +129,7 @@ const Logo = styled.a`
   max-height: 70px;
   font-size: 0;
   display: inline-block;
+  cursor: pointer;
   img {
     display: block;
     width: 100%;
@@ -186,9 +190,9 @@ const NavMenu = styled.div`
       }
     }
   }
-  /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
     display: none;
-  } */
+  }
 `;
 
 const Login = styled.a`

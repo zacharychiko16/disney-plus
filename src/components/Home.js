@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     console.log("hello");
     db.collection("movies").onSnapshot((snapshot) => {
-      snapshot.docs.map((doc) => {
+      snapshot.docs.map( (doc) => {
         console.log(recommends);
         switch (doc.data().type) {
           case "recommend":
@@ -42,6 +42,8 @@ const Home = () => {
             break;
         }
       });
+
+
 
       dispatch(
         setMovies({
