@@ -9,6 +9,7 @@ import {
   setUserLoginDetails,
   setSignOutState,
 } from "../features/user/userSlice";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   const dispatch = useDispatch();
@@ -59,9 +60,9 @@ const Header = (props) => {
   return (
     <Nav>
       <Logo>
-        <a href="/home">
+        <Link to="/home">
           <img src="/images/logo.svg" alt="Disney+" />
-        </a>
+        </Link>
       </Logo>
 
       {!userName ? (

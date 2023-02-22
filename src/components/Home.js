@@ -7,22 +7,23 @@ import Trending from "./Trending";
 import Viewers from "./Viewers";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import db from "../firebase"
-import { setMovies} from "../features/movie/movieSlice"
-import { selectUserName} from "../features/user/userSlice"
+import db from "../firebase";
+import { setMovies } from "../features/movie/movieSlice";
+import { selectUserName } from "../features/user/userSlice";
 
-const Home = () => {
+const Home = (props) => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
+  
+
+  useEffect(() => {
   let recommends = [];
   let newDisneys = [];
   let originals = [];
   let trending = [];
-
-  useEffect(() => {
     console.log("hello");
     db.collection("movies").onSnapshot((snapshot) => {
-      snapshot.docs.map( (doc) => {
+      snapshot.docs.map((doc) => {
         console.log(recommends);
         switch (doc.data().type) {
           case "recommend":
@@ -43,8 +44,6 @@ const Home = () => {
         }
       });
 
-
-
       dispatch(
         setMovies({
           recommend: recommends,
@@ -55,6 +54,7 @@ const Home = () => {
       );
     });
   }, [userName]);
+
   return (
     <Container>
       <ImgSlider />
@@ -74,7 +74,6 @@ const Container = styled.main`
   display: block;
   top: 72px;
   padding: 0 calc(3.5vw + 5px);
-
   &:after {
     background: url("/images/home-background.png") center center / cover
       no-repeat fixed;
